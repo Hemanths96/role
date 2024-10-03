@@ -1,0 +1,23 @@
+---
+# tasks file for test
+
+- name: Install Nginx
+  apt:
+    name: "{{ nginx_package }}"
+    state: present
+    update_cache: yes
+  become: true
+
+- name: Copy default index.html
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+  notify:
+    - restart nginx
+
+- name: Ensure Nginx is started
+  service:
+    name: "{{ nginx_service }}"
+    state: started
+    enabled: true
+

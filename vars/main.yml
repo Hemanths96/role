@@ -1,0 +1,6 @@
+---
+# vars file for test
+
+
+nginx_version: 1.18.0
+
